@@ -1,0 +1,80 @@
+punch:
+  Skills:
+  - CancelEvent
+  - skill{s=mele;cd=3}  
+mele:
+  Conditions:
+  - offgcd
+  - targetwithin 10
+  Skills:
+  - gcd{ticks=20}
+  - potion{type=SLOW;duration=40;level=10;p=false;force=true} @Self
+  - look{headOnly=false;immediately=false;repeat=15;repeatInterval=1} @Target
+  - state{state=punch;li=2;lo=4;n=false;speed=1.4} @self
+  - delay 20
+  - skill{s=throw;cd=0} ~onHit
+throw:
+  Conditions:
+  - targetwithin{d=4}
+  Skills:
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - damage{amount=30;m=5;delay=1} @EntitiesInCone{r=5}
+  - sound{s=block.stone.fall;p=0.5;v=1} @Self
+  - sound{s=block.stone.fall;p=0.5;v=1} @Self
+  - sound{s=block.stone.fall;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - sound{s=block.stone.break;p=0.5;v=1} @Self
+  - throw{velocity=5;velocityY=3} @target 
+rage:
+  Skills:
+  - CancelEvent
+  - skill{s=roar;cd=15}
+roar:
+  Conditions:
+  - offgcd
+  - targetwithin 10
+  Skills:
+  - gcd{ticks=20}
+  - potion{type=SLOW;duration=15;level=6;p=false;force=true} @Self
+  - look{headOnly=false;immediately=false;repeat=5;repeatInterval=1} @Target
+  - sound{s=entity.ravager.roar;p=0.5;v=1} @Self
+  - state{state=rage;li=2;lo=4;n=false;speed=1.4} @self
+  - effect:particlering{particle=cloud;a=3;y=0.2;r=2;points=32;s=0.1;hs=0;v=0.1} @self
+  - delay 15
+  - skill{s=scare;cd=0} ~onHit
+  - effect:particlering{particle=cloud;a=3;y=0.2;r=3.5;points=32;s=0.1;hs=0;v=0.1} @self
+scare:
+  Conditions:
+  - targetwithin{d=8}
+  Skills:
+  - effect:particlering{particle=cloud;a=3;y=0.2;r=5;points=32;s=0.1;hs=0;v=0.1} @self
+  - throw{velocity=15;velocityY=8} @target
+  - delay 50
+death:
+  Skills:
+  - sound{s=block.amethyst_block.hit;p=0.5;v=1} @Self
+  - sound{s=block.amethyst_block.fall;p=0.5;v=1} @Self
+  - sound{s=block.amethyst_block.break;p=0.5;v=1} @Self
+  - sound{s=entity.ravager.death;p=0.5;v=1} @Self
+  - sound{s=block.amethyst_block.place;p=0.5;v=1} @Self
+  - sound{s=block.amethyst_block.step;p=0.5;v=1} @Self
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=rightarm;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=righthand;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=leftarm;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=lefthand;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=40;hS=1;vS=1;speed=.01} @Forward{f=0.0;y=1}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=leftleg;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=leftfoot;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=rightleg;offset=GLOBAL;y=-1.0}
+  - effect:particles{particle=cloud;amount=10;hS=.25;vS=.25;speed=.01} @ModelPart{m=kindletronsr;p=rightfoot;offset=GLOBAL;y=-1.0}
+  - delay 50

@@ -1,0 +1,27 @@
+rocky:
+  Type: AXOLOTL
+  Display: 'ROCKY'
+  Health: 30
+  Damage: 4
+  AIGoalsSelectors:
+  - 0 clear
+  - 1 meleeattack
+  - 2 randomstroll
+  AiTargetSelectors:
+  - 0 clear
+  - 1 players
+  - 2 hurtbytarget
+  DamageModifiers:
+  - PROJECTILE 0
+  Skills:
+  - model{mid=Crocky;n=false} @self ~onSpawn
+  - randomskill{skills=punch,rage;sync=true} ~onAttack
+  - sound{s=block.amethyst_block.hit;p=0.5;v=1} @self ~onDamaged
+  Options:
+    AlwaysShowName: false
+    Collidable: true
+    Silent: true
+    MovementSpeed: 0.20
+    MaxCombatDistance: 5
+    PreventOtherDrops: true
+    KnockbackResistance: 2
